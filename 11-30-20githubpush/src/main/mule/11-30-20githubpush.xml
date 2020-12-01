@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="a268dafe-3b05-40d7-90d8-6339cdfb3a8b" >
+		<http:listener-connection host="0.0.0.0" port="8085" />
+	</http:listener-config>
+	<flow name="11-30-20githubpushFlow" doc:id="d67be0b6-68a3-4c40-8f31-b2a7f14ca8b6" >
+		<http:listener doc:name="Listener" doc:id="77685378-dd03-40f7-946c-b2822d3565c8" config-ref="HTTP_Listener_config" path="/testgit"/>
+		<set-payload value="This is git commit practice" doc:name="Set Payload" doc:id="0b3a8006-efda-4a1a-a6b8-41e3d939bf47" />
+		<logger level="INFO" doc:name="Logger" doc:id="bf56d6d5-45ea-44a9-b94e-f6b315b91012" message="#[payload]"/>
+	</flow>
+</mule>
